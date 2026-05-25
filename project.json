@@ -1,0 +1,23 @@
+{
+  "name": "autogameflow",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "packageName": "com.script.autogameflow",
+  "main": "main.js",
+  "ignore": [".git", "node_modules", "types", "*.ts", "rollup.config.js"],
+  "launchConfig": {
+    "hideLogs": false
+  },
+  "permissionConfig": {
+    "manifestPermissions": [
+      "android.permission.WRITE_EXTERNAL_STORAGE",
+      "android.permission.READ_EXTERNAL_STORAGE",
+      "android.permission.ACCESSIBILITY_SERVICE"
+    ],
+    "requestListOnStartup": [
+      "android.permission.WRITE_EXTERNAL_STORAGE"
+    ]
+  },
+  "displaySplash": false,
+  "stableOnRefresh": false
+}

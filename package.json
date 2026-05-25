@@ -1,0 +1,35 @@
+{
+  "name": "autogameflow",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.js",
+    "build": "NODE_ENV=production rollup -c",
+    "build:dev": "rollup -c",
+    "test": "rollup -c rollup.test.config.js",
+    "build:test": "NODE_ENV=production rollup -c rollup.test.config.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@eslint/js": "^10.0.1",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^29.0.2",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-node-resolve": "^16.0.3",
+    "@rollup/plugin-terser": "^1.0.0",
+    "@rollup/plugin-typescript": "^12.1.2",
+    "autox-v6-api": "^1.1.0",
+    "eslint": "^10.3.0",
+    "rollup": "^4.60.2",
+    "sharp": "^0.34.5",
+    "tslib": "^2.8.1",
+    "typescript": "^5.4.0",
+    "typescript-eslint": "^8.59.1",
+    "ws": "^8.20.0"
+  }
+}

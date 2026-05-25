@@ -1,0 +1,95 @@
+{
+  "name": "猎魔入侵",
+  "category": "guild",
+  "useBaseSteps": true,
+  "steps": [
+    {
+      "id": "openGuild",
+      "name": "打开工会",
+      "action": { "type": "tap", "x": 693, "y": 2316, "delay": 1000 },
+      "confirm": { "type": "hasText", "text": "大厅", "region": { "x": 357, "y": 397, "w": 95, "h": 48 } },
+      "next": "enterHunt"
+    },
+    {
+      "id": "enterHunt",
+      "name": "进入猎魔入侵",
+      "action": { "type": "tap", "x": 152, "y": 1335, "delay": 500 },
+      "confirm": { "type": "hasText", "text": "挑战", "region": { "x": 459, "y": 2251, "w": 160, "h": 96 } },
+      "next": "clickChallenge"
+    },
+    {
+      "id": "clickChallenge",
+      "name": "点击挑战",
+      "action": { "type": "tap", "x": 550, "y": 2296, "delay": 500 },
+      "confirm": { "type": "hasText", "text": "开始挑战", "region": { "x": 838, "y": 2277, "w": 212, "h": 68 } },
+      "next": "checkDeploy"
+    },
+    {
+      "id": "checkDeploy",
+      "name": "检查上阵状态",
+      "action": {
+        "type": "branchByText",
+        "branches": [
+          { "text": "上阵", "region": { "x": 218, "y": 2268, "w": 244, "h": 91 }, "then": { "type": "tap", "x": 351, "y": 2316, "delay": 1000 } },
+          { "text": "下阵", "region": { "x": 218, "y": 2268, "w": 244, "h": 91 } }
+        ]
+      },
+      "confirm": { "type": "always" },
+      "next": "checkPlantCount"
+    },
+    {
+      "id": "checkPlantCount",
+      "name": "检查植物数量",
+      "action": {
+        "type": "branchByText",
+        "branches": [
+          { "text": "6/6", "region": { "x": 960, "y": 1167, "w": 86, "h": 73 }, "exact": true, "next": "startChallenge" }
+        ],
+        "defaultNext": "revivePlants"
+      },
+      "confirm": { "type": "always" }
+    },
+    {
+      "id": "startChallenge",
+      "name": "开始挑战",
+      "action": { "type": "tap", "x": 953, "y": 2311, "delay": 1000 },
+      "confirm": { "type": "always" },
+      "next": "inBattle"
+    },
+    {
+      "id": "inBattle",
+      "name": "挑战中",
+      "action": {
+        "type": "pollUntil",
+        "interval": 5000,
+        "condition": { "type": "hasText", "text": "挑战", "region": { "x": 459, "y": 2251, "w": 160, "h": 96 } }
+      },
+      "confirm": { "type": "always" },
+      "next": "backToChallenge"
+    },
+    {
+      "id": "backToChallenge",
+      "name": "返回挑战页面",
+      "action": {
+        "type": "backUntil",
+        "maxAttempts": 10,
+        "interval": 800,
+        "condition": { "type": "hasText", "text": "挑战", "region": { "x": 459, "y": 2251, "w": 160, "h": 96 } }
+      },
+      "confirm": { "type": "hasText", "text": "挑战", "region": { "x": 459, "y": 2251, "w": 160, "h": 96 } },
+      "next": "clickChallenge"
+    },
+    {
+      "id": "revivePlants",
+      "name": "复活退场植物",
+      "action": {
+        "type": "tapIfColor",
+        "firstColor": "#c67339",
+        "paths": [[40, 1, "#d47e3c"], [24, 17, "#f0d0ad"], [-6, 9, "#b85e1a"], [48, 8, "#c07537"], [22, 33, "#fcefdc"]],
+        "colorRegion": [935, 934, 74, 53]
+      },
+      "confirm": { "type": "always" },
+      "next": "END"
+    }
+  ]
+}

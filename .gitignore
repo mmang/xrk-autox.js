@@ -1,0 +1,17 @@
+node_modules/
+.DS_Store
+dist/
+build/
+.env
+.env.local
+*.log
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+.next/
+coverage/
+
+# Ignore all markdown files except README.md
+*.md
+!README.md
